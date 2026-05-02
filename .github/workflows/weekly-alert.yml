@@ -2,9 +2,8 @@ name: Weekly Parking Alert
 
 on:
   schedule:
-    # Every Saturday at 10:00 AM ET (14:00 UTC) — after DOT posts new advisory
     - cron: "0 14 * * 6"
-  workflow_dispatch:  # allows manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   send-alert:
