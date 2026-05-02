@@ -16,15 +16,17 @@ from bs4 import BeautifulSoup
 
 # ── Target streets ────────────────────────────────────────────────────────────
 STREET_PATTERNS = [
-    r"skillman\s+av(e(nue)?)?",
-    r"barnett\s+av(e(nue)?)?",
-    r"4[6-9](th|st|nd|rd)?\s+st(reet)?",
-    r"5[0-4](th|st|nd|rd)?\s+st(reet)?",
+    r"skillman",
+    r"barnett",
+    r"4[6-9]\s+st",
+    r"5[0-4]\s+st",
+    r"4[6-9]th",
+    r"5[0-4]th",
 ]
 CROSS_PATTERNS = [
     r"skillman",
     r"barnett",
-    r"43(rd)?\s+av(e(nue)?)?",
+    r"43(rd)?\s+av",
 ]
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ParkingAlertBot/1.0)"}
