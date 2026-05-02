@@ -1,0 +1,30 @@
+name: Weekly Parking Alert
+
+on:
+  schedule:
+    # Every Saturday at 10:00 AM ET (14:00 UTC) — after DOT posts new advisory
+    - cron: "0 14 * * 6"
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run parking alert script
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: python scripts/parking_alert.py
